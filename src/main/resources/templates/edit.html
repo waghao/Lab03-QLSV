@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Update</title>
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<section layout:fragment="content" class="container mt-5">
+    <h1 class="mb-4">Update</h1>
+    <form th:action="@{/=add/update/{id}(id=${lop.id})}"
+          th:object="${lop}" method="post" class="needs-validation" novalidate>
+        <div class="mb-3">
+            <label for="name" class="form-label"> Ma lop:</label>
+            <input type="text" th:field="*{maLop}" class="form-control" id="name"
+                   required>
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}"
+                 th:errors="*{maLop}">Valid name is required.</div>
+        </div>
+        <div class="mb-3">
+            <label for="name" class="form-label"> Ten lop:</label>
+            <input type="text" th:field="*{tenLop}" class="form-control" id="TenLop"
+                   required>
+            <div class="invalid-feedback" th:if="${#fields.hasErrors('name')}"
+                 th:errors="*{tenLop}">Valid name is required.</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a th:href="@{/add}" class="btn btn-link">Cancel</a>
+    </form>
+</section>
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js">
+</script>
+</body>
+</html>
